@@ -12,6 +12,22 @@ class Map(dict):
                 func(key, value, self)
         return self
 
+    def map(self, func):
+        """
+        实现类似 JavaScript 中的 map 方法。
+        :param func: 映射函数，返回新的键值对
+        :return: 映射后的新字典
+        """
+        result = {}
+        for key, value in self.items():
+            if len(inspect.signature(func).parameters) == 1:
+                new_key, new_value = func(value)
+            elif len(inspect.signature(func).parameters) == 2:
+                new_key, new_value = func(key, value)
+            else:
+                new_key, new_value = func(key, value, self)
+            result[new_key] = new_value
+        return Map(result)
 
     def keys(self):
         """
@@ -27,7 +43,6 @@ class Map(dict):
         :return: 值的列表
         """
         return list(self.values())
-
 
     def set(self, key, value):
         """
@@ -71,6 +86,21 @@ class Map(dict):
                 if func(key, value, self):
                     result[key] = value
         return Map(result)
+        
+    def size(self):
+        """
+        返回字典中键值对的数量。
+        :return: 键值对的数量
+        """
+        return len(self)
+
+    def clear(self):
+        """
+        清空字典中的所有键值对。
+        :return: 清空后的字典
+        """
+        super().clear()
+        return self
     
 
 if __name__ == '__main__':
@@ -83,6 +113,12 @@ if __name__ == '__main__':
 
 
     print("初始字典:", example_dict)
+
+    # 测试 forEach 方法
+    example_dict.forEach(lambda key, value: print(f"键: {key}, 值: {value}"))
+    # 测试 map 方法
+    mapped_dict = example_dict.map(lambda key, value: (key.upper(), value * 2))
+    print("将键转换为大写，值乘以 2 后的字典:", mapped_dict)
 
     # 测试 set 方法
     example_dict.set('d', 4)
@@ -101,6 +137,10 @@ if __name__ == '__main__':
     filtered_dict = example_dict.filter(lambda key, value: value > 2)
     print("过滤值大于 2 的键值对后的字典:", filtered_dict)
 
-    # 测试 forEach 方法
-    example_dict.forEach(lambda key, value: print(f"键: {key}, 值: {value}"))
 
+    # size
+    print(example_dict.size())
+    #clear
+    example_dict.clear()
+    print(example_dict)
+    

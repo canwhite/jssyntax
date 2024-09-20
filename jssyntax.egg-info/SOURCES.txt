@@ -4,6 +4,7 @@ setup.py
 jssyntax/__init__.py
 jssyntax/array.py
 jssyntax/dictionary.py
+jssyntax/set.py
 jssyntax/tools.py
 jssyntax.egg-info/PKG-INFO
 jssyntax.egg-info/SOURCES.txt
