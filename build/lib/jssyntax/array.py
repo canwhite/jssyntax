@@ -12,6 +12,7 @@ class List(list):
                 func(item, index, self)
         return self
 
+
     def map(self, func):
         result = []
         for index, item in enumerate(self):

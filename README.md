@@ -6,7 +6,10 @@ Write python using js syntax
 pip install jssyntax
 
 ## Usage
+
+1) List
 ```
+
 from jssyntax import List
 
 numbers = List([1, 2, 3, 4, 5])
@@ -61,6 +64,61 @@ print(numbers.includes(1000))
 
 
 ```
+2) Map 
+```
+# 使用示例
+example_dict = Map({
+    'a': 1,
+    'b': 2,
+    'c': 3
+})
+
+
+print("初始字典:", example_dict)
+
+# 测试 set 方法
+example_dict.set('d', 4)
+print("设置键 'd' 后的字典:", example_dict)
+
+# 测试 delete 方法
+deleted_value = example_dict.delete('b')
+print("删除键 'b' 后的字典:", example_dict)
+print("被删除的值:", deleted_value)
+
+# 测试 entries 方法
+entries = example_dict.entries()
+print("字典的键值对列表:", entries)
+
+# 测试 filter 方法
+filtered_dict = example_dict.filter(lambda key, value: value > 2)
+print("过滤值大于 2 的键值对后的字典:", filtered_dict)
+
+# 测试 forEach 方法
+example_dict.forEach(lambda key, value: print(f"键: {key}, 值: {value}"))
+
+```
+
+
+3) match 
+```
+# 示例使用
+response = {'status': 'success'}
+# 匿名函数需要lambad关键字，add = lambda x, y: x + y
+
+#使用列表推导式，不用续行符
+result = [
+    match(response)
+    .with_(lambda x: x['status'] == 'success', lambda x: 'Success')
+    .with_(lambda x: x['status'] == 'error', lambda x: 'Error')
+    .otherwise(lambda x: 'Unknown')
+    .execute()
+][0]
+
+print(result)  
+
+
+```
+
 
 ## PS：
 

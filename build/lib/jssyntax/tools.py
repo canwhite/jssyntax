@@ -42,6 +42,5 @@ if __name__ == '__main__':
         .otherwise(lambda x: 'Unknown')
         .execute()
     ][0]
-    
 
     print(result)  # 输出: Success

@@ -1,8 +1,9 @@
 LICENSE
 README.md
 setup.py
-jssyntax/List.py
 jssyntax/__init__.py
+jssyntax/array.py
+jssyntax/dictionary.py
 jssyntax/tools.py
 jssyntax.egg-info/PKG-INFO
 jssyntax.egg-info/SOURCES.txt
