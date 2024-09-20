@@ -14,15 +14,14 @@ from jssyntax import List
 
 numbers = List([1, 2, 3, 4, 5])
 
-#forEach
+# 调用forEach方法
 list = []
 numbers.forEach(lambda item, index, array: 
-    #使用元祖来确保两个handle都在lambda表达式中
+    #使用元组来确保两个handle都在lambda表达式中
     (print(f"Item: {item}, Index: {index}, Array: {array}"),
         list.append(item))
 )
 print(list)
-
 
 # 调用 map 方法
 squared_numbers = numbers.map(lambda item, index, array: item ** 2)
@@ -73,8 +72,14 @@ example_dict = Map({
     'c': 3
 })
 
-
 print("初始字典:", example_dict)
+
+# 测试 forEach 方法
+example_dict.forEach(lambda key, value: print(f"键: {key}, 值: {value}"))
+
+# 测试map方法
+mapped_dict = example_dict.map(lambda key, value: (key.upper(), value * 2))
+print("将键转换为大写，值乘以 2 后的字典:", mapped_dict)
 
 # 测试 set 方法
 example_dict.set('d', 4)
@@ -93,13 +98,65 @@ print("字典的键值对列表:", entries)
 filtered_dict = example_dict.filter(lambda key, value: value > 2)
 print("过滤值大于 2 的键值对后的字典:", filtered_dict)
 
+```
+
+3) Set
+```
+# 创建一个集合
+example_set = Set([1, 2, 3, 3, 4, 5])
+print("初始集合:", example_set)
+
 # 测试 forEach 方法
-example_dict.forEach(lambda key, value: print(f"键: {key}, 值: {value}"))
+example_set.forEach(lambda item: print(f"元素: {item}"))
+
+# 测试 map 方法
+mapped_set = example_set.map(lambda item: item * 2)
+print("映射后的集合:", mapped_set)
+
+# 测试 has 方法
+print("集合中是否包含 3:", example_set.has(3))
+print("集合中是否包含 6:", example_set.has(6))
+
+# 测试 filter 方法
+filtered_set = example_set.filter(lambda item: item % 2 == 0)
+print("过滤后的集合:", filtered_set)
+
+# 测试 add 方法
+example_set.add(6)
+print("添加元素 6 后的集合:", example_set)
+
+# 测试 delete 方法
+example_set.delete(3)
+print("删除元素 3 后的集合:", example_set)
+
+# 测试 clear 方法
+example_set.clear()
+print("清空后的集合:", example_set)
+
+# 测试 size 方法
+example_set = Set([1, 2, 3, 4, 5])
+print("集合的大小:", example_set.size())
+
+# 测试 values 方法
+print("集合的所有值:", example_set.values())
+
+# 测试 union 方法
+other_set = Set([4, 5, 6, 7])
+union_set = example_set.union(other_set)
+print("两个集合的并集:", union_set)
+
+# 测试 intersection 方法
+intersection_set = example_set.intersection(other_set)
+print("两个集合的交集:", intersection_set)
+
+# 测试 difference 方法
+difference_set = example_set.difference(other_set)
+print("两个集合的差集:", difference_set)
 
 ```
 
 
-3) match 
+4) match 
 ```
 # 示例使用
 response = {'status': 'success'}

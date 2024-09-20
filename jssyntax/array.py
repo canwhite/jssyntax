@@ -144,6 +144,20 @@ class List(list):
         """
         return List([item for sublist in self for item in func(sublist)])
 
+    def size(self):
+        """
+        返回列表中元素的数量。
+        :return: 元素的数量
+        """
+        return len(self)
+
+    def clear(self):
+        """
+        清空列表中的所有元素。
+        :return: 清空后的列表
+        """
+        super().clear()
+        return self
     
 
 if __name__ == '__main__':
@@ -197,5 +211,12 @@ if __name__ == '__main__':
     #includes
     print(numbers.includes(100))
     print(numbers.includes(1000))
+
+    #size
+    print(numbers.size())
+
+    #clear
+    numbers.clear()
+    print(numbers)
 
 
