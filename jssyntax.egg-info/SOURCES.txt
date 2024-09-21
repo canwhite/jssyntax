@@ -4,6 +4,7 @@ setup.py
 jssyntax/__init__.py
 jssyntax/list.py
 jssyntax/map.py
+jssyntax/pattern.py
 jssyntax/set.py
 jssyntax/tools.py
 jssyntax.egg-info/PKG-INFO
