@@ -27,10 +27,9 @@ print(list)
 squared_numbers = numbers.map(lambda item, index, array: item ** 2)
 print(squared_numbers)
 
-
+# findIndex
 even_index = numbers.findIndex(lambda item, index, array: item % 2 == 0)
 print(f"第一个偶数的位置是: {even_index}")
-
 
 # 使用 splice 方法
 removed_elements = numbers.splice(1, 2, 10, 20)
@@ -46,10 +45,11 @@ print(f"过滤后的列表: {filtered_numbers}")
 found_number = numbers.find(lambda item: item > 5)
 print(f"找到的第一个大于5的数字是: {found_number}")
 
-
-#push和pop
+#push
 numbers.push(100)
 print(numbers)
+
+#pop 
 numbers.pop()
 print(numbers)
 
@@ -178,9 +178,32 @@ result = [
 
 print(result)  
 
-
+```
+5) singleton 
+```
+from jssyntax import Singleton
+@Singleton
+class MySingletonClass:
+    def __init__(self, value):
+        self.value = value
+    ...
 ```
 
+5) EventBus
+```
+from jssyntax import EventBus 
+
+event_bus = EventBus()
+
+def handle_event(data):
+    print(f"Event received with data: {data}")
+
+event_bus.on("test_event", handle_event)
+event_bus.emit("test_event", "Hello, World!")
+event_bus.off("test_event", handle_event)
+event_bus.emit("test_event", "This should not be printed")
+
+```
 
 ## PS：
 

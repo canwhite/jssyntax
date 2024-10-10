@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: jssyntax
-Version: 0.2.7
+Version: 0.2.8
 Summary: Write python using js syntax
 Home-page: https://github.com/canwhite/jssyntax
 Author: Zack Qiao
@@ -55,6 +55,11 @@ print(f"修改后的列表: {numbers}")
 # 调用 filter 方法
 filtered_numbers = numbers.filter(lambda item, index, array: item % 2 == 0)
 print(f"过滤后的列表: {filtered_numbers}")
+
+# 调用 find 方法
+found_number = numbers.find(lambda item: item > 5)
+print(f"找到的第一个大于5的数字是: {found_number}")
+
 
 #push和pop
 numbers.push(100)
