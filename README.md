@@ -42,6 +42,11 @@ print(f"修改后的列表: {numbers}")
 filtered_numbers = numbers.filter(lambda item, index, array: item % 2 == 0)
 print(f"过滤后的列表: {filtered_numbers}")
 
+# 调用 find 方法
+found_number = numbers.find(lambda item: item > 5)
+print(f"找到的第一个大于5的数字是: {found_number}")
+
+
 #push和pop
 numbers.push(100)
 print(numbers)

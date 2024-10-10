@@ -78,6 +78,24 @@ class List(list):
                     result.append(item)
         return List(result)
 
+    def find(self, func):
+        """
+        实现类似 JavaScript 中的 find 方法。
+        :param func: 查找函数，返回 True 的第一个元素将被返回
+        :return: 找到的元素，如果没有找到则返回 None
+        """
+        for index, item in enumerate(self):
+            if len(inspect.signature(func).parameters) == 1:
+                if func(item):
+                    return item
+            elif len(inspect.signature(func).parameters) == 2:
+                if func(item, index):
+                    return item
+            else:
+                if func(item, index, self):
+                    return item
+        return None
+
     
     def includes(self, value):
         """
@@ -193,11 +211,19 @@ if __name__ == '__main__':
     filtered_numbers = numbers.filter(lambda item, index: item % 2 == 0)
     print(f"过滤后的列表: {filtered_numbers}")
 
+
     #push和pop
     numbers.push(100)
     print(numbers)
+
+    # 调用 find 方法
+    found_number = numbers.find(lambda item: item > 5)
+    print(f"找到的第一个大于5的数字是: {found_number}")
+
+
     numbers.pop()
     print(numbers)
+
 
 
     # 调用 reduce 方法
@@ -218,5 +244,6 @@ if __name__ == '__main__':
     #clear
     numbers.clear()
     print(numbers)
+
 
 
